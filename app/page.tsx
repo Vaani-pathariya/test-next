@@ -33,7 +33,6 @@ export default function Home() {
       }
       const jsonData = (await response.json()) as User[];
       setData(jsonData);
-      console.log(jsonData);
     } catch (error: any) {
       console.error("Error fetching data:", error.message);
     }
@@ -46,7 +45,6 @@ export default function Home() {
       setSelectedRows([...selectedRows, id]);
     }
   };
-  console.log(selectedRows);
   const handleAddDataClick = () => {
     setShowForm(true);
   };
@@ -94,6 +92,7 @@ export default function Home() {
     }
   };
   const sendSelectedRowsToEmail = async () => {
+    if (selectedRows.length>0){
     try {
       const response = await fetch("/api/email", {
         method: "POST",
@@ -111,6 +110,7 @@ export default function Home() {
     } catch (error: any) {
       console.error("Error sending selected rows to email:", error.message);
     }
+  }
   };
 
   return (
