@@ -48,7 +48,7 @@ export async function POST(request) {
     // Send email
     await transporter.sendMail({
       from: process.env.user,
-      to: "vaanipathariya@gmail.com",
+      to: "info@redpositive.in",
       subject: "User Data",
       text: emailContent,
     });
